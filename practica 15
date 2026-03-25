@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+
+int arreglo[10] = {10,11,12,77,79,85,22,30,95,69};
+int posicion = -1;
+
+// Función de búsqueda
+int busqueda(int arr[], int tam, int numero_buscado){
+    for (int i = 0; i < tam; i++){
+        if (arr[i] == numero_buscado){
+            posicion = i;
+            return 1; 
+        }
+    }
+    return 0; 
+}
+
+int main()
+{
+    int numero_buscado;
+    int encontrado;
+
+    printf("Ingresa el numero a buscar:\n");
+    scanf("%d", &numero_buscado);
+
+    encontrado = busqueda(arreglo, 10, numero_buscado);
+
+    if(encontrado == 1){
+        printf("El numero esta en la posicion %d\n", posicion);
+    } else {
+        printf("No se encuentra en el arreglo\n");
+    }
+
+    return 0;
+}
