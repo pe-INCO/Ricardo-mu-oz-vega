@@ -1,0 +1,102 @@
+#include <stdio.h>
+#define max 5
+int main(){
+    int arreglo [max];
+    int tope = -1;
+    int n = 0;
+    int opcion,modo,dao,i;
+    
+    printf("Seleccione el modo:\n");
+    printf("1. LIFO (pila)\n");
+    printf("2.FIFO (cola)\n");
+    printf("opcion:");
+    scanf("%d", &modo);
+    
+    do{
+      printf("\n--- MENU ---\n");
+        printf("1. Encolar/Apilar\n");
+        printf("2. Desencolar/Desapilar\n");
+        printf("3. Mostrar\n");
+        printf("4. Salir\n");
+        printf("Opcion: ");
+        scanf("%d", &opcion); switch(opcion) {
+            case 1: // Insertar
+                if (modo == 1) { // LIFO (Pila)
+                    if (tope == MAX - 1) {
+                        printf("Error: Overflow (Pila llena)\n");
+                    } else {
+                        printf("Ingrese dato: ");
+                        scanf("%d", &dato);
+                        tope++;
+                        arreglo[tope] = dato;
+                    }
+                } else if (modo == 2) { // FIFO (Cola)
+                    if (n == MAX) {
+                        printf("Error: Overflow (Cola llena)\n");
+                    } else {
+                        printf("Ingrese dato: ");
+                        scanf("%d", &dato);
+                        arreglo[n] = dato;
+                        n++;
+                    }
+                }
+                break;
+
+            case 2: // Eliminar
+                if (modo == 1) { // LIFO
+                    if (tope == -1) {
+                        printf("Error: Underflow (Pila vacia)\n");
+                    } else {
+                        printf("Elemento eliminado: %d\n", arreglo[tope]);
+                        tope--;
+                    }
+                } else if (modo == 2) { // FIFO
+                    if (n == 0) {
+                        printf("Error: Underflow (Cola vacia)\n");
+                    } else {
+                        printf("Elemento eliminado: %d\n", arreglo[0]);
+                        // Recorrer elementos a la izquierda
+                        for (i = 0; i < n - 1; i++) {
+                            arreglo[i] = arreglo[i + 1];
+                        }
+                        n--;
+                    }
+                }
+                break;
+
+            case 3: // Mostrar
+                if (modo == 1) { // LIFO
+                    if (tope == -1) {
+                        printf("Pila vacia\n");
+                    } else {
+                        printf("Contenido de la pila:\n");
+                        for (i = tope; i >= 0; i--) {
+                            printf("%d\n", arreglo[i]);
+                        }
+                    }
+                } else if (modo == 2) { // FIFO
+                    if (n == 0) {
+                        printf("Cola vacia\n");
+                    } else {
+                        printf("Contenido de la cola:\n");
+                        for (i = 0; i < n; i++) {
+                            printf("%d\n", arreglo[i]);
+                        }
+                    }
+                }
+                break;
+
+            case 4:
+                printf("Saliendo del programa...\n");
+                break;
+
+            default:
+                printf("Opcion invalida\n");
+        }
+
+    } while (opcion != 4);
+
+    return 0;
+}
+    }
+}
